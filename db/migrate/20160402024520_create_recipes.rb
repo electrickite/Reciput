@@ -1,7 +1,7 @@
 class CreateRecipes < ActiveRecord::Migration
   def change
     create_table :recipes do |t|
-      t.string :name
+      t.string :name, null: false
       t.text :description
       t.integer :active_time
       t.integer :total_time

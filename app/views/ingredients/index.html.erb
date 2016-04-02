@@ -1,0 +1,28 @@
+<h1>Listing Ingredients</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th><span class="sr-only">Actions</span></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ingredients.each do |ingredient| %>
+      <tr>
+        <td><%= link_to ingredient.name, ingredient %></td>
+        <td><%= ingredient.description %></td>
+        <td>
+          <%= link_to 'Edit', edit_ingredient_path(ingredient) %> | 
+          <%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ingredient', new_ingredient_path, class: 'btn btn-primary' %>
