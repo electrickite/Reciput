@@ -1,5 +1,5 @@
 <li>
-  <%= numeric_to_mixed_number ingredient.amount %>
+  <%= format_amount ingredient.amount %>
   <%= ingredient.unit.pluralize(ingredient.amount) %>
   <%= ingredient.name %><%= ", #{ingredient.notes}" if ingredient.notes.present? %>
   <small>

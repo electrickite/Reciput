@@ -3,11 +3,20 @@ module RecipesHelper
     distance_of_time_in_words(time*60)
   end
 
-  def numeric_to_mixed_number(amount)
+  def format_amount(amount=0)
+    amount.to_f.zero? ? '' : number_to_fraction(amount)
+  end
+
+  def number_to_fraction(amount)
     amount_as_integer = amount.to_i
-    if (amount_as_integer != amount.to_f) && (amount_as_integer > 0)
-      fraction = amount - amount_as_integer
-      "#{amount_as_integer} #{fraction.to_r.rationalize(Rational('0.01'))}"
+    if amount_as_integer != amount.to_f && amount > 0
+      fraction = (amount - amount_as_integer).to_r.rationalize(Rational('0.01'))
+
+      if amount_as_integer > 0
+        "#{amount_as_integer} #{fraction}"
+      else
+        "#{fraction}"
+      end
     else
       amount_as_integer.to_s
     end
