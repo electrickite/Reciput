@@ -48,3 +48,9 @@
   <strong>Equipment:</strong>
   <%= @recipe.equipment %>
 </p>
+
+<h2>Ingredients</h2>
+
+<ul>
+  <%= render partial: 'ingredients/list_item', collection: @recipe.ingredients, as: :ingredient %>
+</ul>

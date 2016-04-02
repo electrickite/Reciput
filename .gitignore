@@ -16,6 +16,9 @@
 !/log/.keep
 /tmp
 
+# Ignore history files
+.byebug_history
+
 
 # OSX hidden files
 .DS_Store
