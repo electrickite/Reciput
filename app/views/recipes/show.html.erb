@@ -1,0 +1,50 @@
+<h1><%= @recipe.name %></h1>
+
+<div class="pull-right">
+  <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+  <%= link_to 'Back', recipes_path %>
+</div>
+
+<%= simple_format @recipe.description %>
+
+<hr>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Yield</h3>
+      </div>
+      <div class="panel-body">
+        <%= @recipe.yield %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Active time</h3>
+      </div>
+      <div class="panel-body">
+        <%= format_time @recipe.active_time %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Total time</h3>
+      </div>
+      <div class="panel-body">
+        <%= format_time @recipe.total_time %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>
+  <strong>Equipment:</strong>
+  <%= @recipe.equipment %>
+</p>
