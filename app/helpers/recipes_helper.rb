@@ -11,7 +11,6 @@ module RecipesHelper
     amount_as_integer = amount.to_i
     if amount_as_integer != amount.to_f && amount > 0
       fraction = (amount - amount_as_integer).to_r.rationalize(Rational('0.01'))
-
       if amount_as_integer > 0
         "#{amount_as_integer} #{fraction}"
       else

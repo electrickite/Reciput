@@ -17,6 +17,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass', '~> 3.3.0'
 gem 'simple_form', '~> 3.1.0'
+gem 'active_link_to'
 
 group :development, :test do
   gem 'byebug'
