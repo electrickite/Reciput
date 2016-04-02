@@ -1,6 +1,6 @@
 <li>
   <%= format_amount ingredient.amount %>
-  <%= ingredient.unit.pluralize(ingredient.amount) %>
+  <%= ingredient.unit %>
   <%= ingredient.name %><%= ", #{ingredient.notes}" if ingredient.notes.present? %>
   <small>
     <%= link_to 'Edit', edit_recipe_ingredient_path(@recipe, ingredient) %> |
