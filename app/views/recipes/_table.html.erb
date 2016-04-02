@@ -1,0 +1,30 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Active time</th>
+      <th>Total time</th>
+      <th>Yield</th>
+      <th>Equipment</th>
+      <th><span class="sr-only">Actions</span></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td><%= link_to recipe.name, recipe %></td>
+        <td><%= recipe.description %></td>
+        <td><%= format_time recipe.active_time %></td>
+        <td><%= format_time recipe.total_time %></td>
+        <td><%= recipe.yield %></td>
+        <td><%= recipe.equipment %></td>
+        <td>
+          <%= link_to 'Edit', edit_recipe_path(recipe) %> | 
+          <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<%= render 'head' %>
+
+<body class="home">
+  <%= render 'navbar' %>
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Reciput</h1>
+      <p>A place to put your recipes!</p>
+      <p><%= link_to 'Create new recipe', new_recipe_path, class: 'btn btn-primary btn-lg' %></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <%= render "flash_messages" %> 
+    <%= yield %>
+  </div>
+
+</body>
+</html>
