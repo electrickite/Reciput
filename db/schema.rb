@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20160402035311) do
 
-  create_table "ingredients", force: :cascade do |t|
+  create_table "foods", force: :cascade do |t|
     t.string   "name",        null: false
     t.text     "description"
     t.datetime "created_at",  null: false

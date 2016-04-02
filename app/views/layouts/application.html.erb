@@ -18,11 +18,12 @@
   <![endif]-->
 </head>
 <body>
+  <%= render 'navbar' %>
 
-<div class="container">
-  <%= render "flash_messages" %> 
-  <%= yield %>
-</div>
+  <div class="container">
+    <%= render "flash_messages" %> 
+    <%= yield %>
+  </div>
 
 </body>
 </html>

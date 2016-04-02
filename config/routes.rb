@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   resources :recipes
-  resources :ingredients
+  resources :foods
 
   root 'welcome#index'
 

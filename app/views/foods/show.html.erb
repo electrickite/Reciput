@@ -1,0 +1,8 @@
+<h1><%= @food.name %></h1>
+
+<div class="pull-right">
+  <%= link_to 'Edit', edit_food_path(@food) %> |
+  <%= link_to 'Back', foods_path %>
+</div>
+
+<%= simple_format @food.description %>
