@@ -1,0 +1,11 @@
+<%= simple_form_for [@recipe, @ingredient], html: {class: 'form-inline'} do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :amount, placeholder: 'Amount', label_html: {class: 'sr-only'} %>
+  <%= f.input :unit, placeholder: 'Unit', label_html: {class: 'sr-only'} %>
+  <%= f.association :food, prompt: 'Food', label_html: {class: 'sr-only'} %>
+  <%= f.input :notes, as: :string, placeholder: 'Notes', label_html: {class: 'sr-only'} %>
+
+  <%= f.button :submit, 'Add' %>
+  <%= link_to 'Cancel', :back, class: 'btn btn-link' %>
+<% end %>

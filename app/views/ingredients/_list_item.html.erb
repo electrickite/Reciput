@@ -2,4 +2,8 @@
   <%= numeric_to_mixed_number ingredient.amount %>
   <%= ingredient.unit.pluralize(ingredient.amount) %>
   <%= ingredient.name %><%= ", #{ingredient.notes}" if ingredient.notes.present? %>
+  <small>
+    <%= link_to 'Edit', edit_recipe_ingredient_path(@recipe, ingredient) %> |
+    <%= link_to 'Remove', recipe_ingredient_path(@recipe, ingredient), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </small>
 </li>

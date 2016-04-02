@@ -50,6 +50,7 @@
 </p>
 
 <h2>Ingredients</h2>
+<%= link_to 'Add', new_recipe_ingredient_path(@recipe) %>
 
 <ul>
   <%= render partial: 'ingredients/list_item', collection: @recipe.ingredients, as: :ingredient %>
