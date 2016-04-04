@@ -23,7 +23,6 @@ gem 'pg', group: :postgres
 group :production do
   gem 'rails_12factor'
   gem 'puma'
-  #gem 'therubyracer', platforms: :ruby
 end
 
 group :development, :test do
