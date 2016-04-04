@@ -5,4 +5,5 @@ class Ingredient < ActiveRecord::Base
   validates :recipe, :food, presence: true
 
   delegate :name, to: :food
+  delegate :user, to: :recipe
 end

@@ -15,6 +15,7 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+    authorize @recipe
   end
 
   # GET /recipes/1/edit
@@ -25,6 +26,7 @@ class RecipesController < ApplicationController
   # POST /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
+    authorize @recipe
 
     respond_to do |format|
       if @recipe.save
@@ -65,6 +67,7 @@ class RecipesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
       @recipe = Recipe.find(params[:id])
+      authorize @recipe
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -15,6 +15,7 @@ class FoodsController < ApplicationController
   # GET /foods/new
   def new
     @food = Food.new
+    authorize @food
   end
 
   # GET /foods/1/edit
@@ -25,6 +26,7 @@ class FoodsController < ApplicationController
   # POST /foods.json
   def create
     @food = Food.new(food_params)
+    authorize @food
 
     respond_to do |format|
       if @food.save
@@ -65,6 +67,7 @@ class FoodsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_food
       @food = Food.find(params[:id])
+      authorize @food
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

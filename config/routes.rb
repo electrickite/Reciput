@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :foods
+  resources :users, only: [:edit, :update]
 
   root 'welcome#index'
 

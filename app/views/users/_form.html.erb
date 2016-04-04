@@ -1,0 +1,10 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :email, type: 'email' %>
+  <%= f.input :password, required: false %>
+  <%= f.input :password_confirmation, label: 'Confirm password', required: false %>
+
+  <%= f.button :submit %>
+  <%= link_to 'Cancel', :back, class: 'btn btn-link' %>
+<% end %>

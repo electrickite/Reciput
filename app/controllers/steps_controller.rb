@@ -5,6 +5,7 @@ class StepsController < ApplicationController
   # GET /steps/new
   def new
     @step = Step.new
+    authorize @step
 
     if @recipe.steps.present?
       @step.sequence = @recipe.steps.last.sequence + 1
@@ -19,6 +20,7 @@ class StepsController < ApplicationController
   # POST /steps.json
   def create
     @step = Step.new(step_params)
+    authorize @step
 
     respond_to do |format|
       if @step.save
@@ -59,6 +61,7 @@ class StepsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_step
       @step = Step.find(params[:id])
+      authorize @step
     end
 
     def set_recipe

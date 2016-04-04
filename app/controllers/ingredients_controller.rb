@@ -5,6 +5,7 @@ class IngredientsController < ApplicationController
   # GET /ingredients/new
   def new
     @ingredient = Ingredient.new
+    authorize @ingredient
   end
 
   # GET /ingredients/1/edit
@@ -15,6 +16,7 @@ class IngredientsController < ApplicationController
   # POST /ingredients.json
   def create
     @ingredient = Ingredient.new(ingredient_params)
+    authorize @ingredient
 
     respond_to do |format|
       if @ingredient.save
@@ -55,6 +57,7 @@ class IngredientsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_ingredient
       @ingredient = Ingredient.find(params[:id])
+      authorize @ingredient
     end
 
     def set_recipe
