@@ -6,6 +6,6 @@
   <%= f.association :food, prompt: 'Food', label_html: {class: 'sr-only'} %>
   <%= f.input :notes, as: :string, placeholder: 'Notes', label_html: {class: 'sr-only'} %>
 
-  <%= f.button :submit, 'Add' %>
+  <%= f.button :submit %>
   <%= link_to 'Cancel', :back, class: 'btn btn-link' %>
 <% end %>

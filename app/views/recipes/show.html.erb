@@ -7,8 +7,6 @@
 
 <%= simple_format @recipe.description %>
 
-<hr>
-
 <div class="row">
   <div class="col-md-4">
     <div class="panel panel-default">
@@ -44,10 +42,12 @@
   </div>
 </div>
 
-<p>
-  <strong>Equipment:</strong>
-  <%= @recipe.equipment %>
-</p>
+<%- unless @recipe.equipment.blank? %>
+  <p>
+    <strong>Equipment:</strong>
+    <%= @recipe.equipment %>
+  </p>
+<%- end %>
 
 <h2>Ingredients</h2>
 <%= link_to 'Add', new_recipe_ingredient_path(@recipe) %>
@@ -55,3 +55,13 @@
 <ul class="list-unstyled">
   <%= render partial: 'ingredients/list_item', collection: @recipe.ingredients, as: :ingredient %>
 </ul>
+
+<hr>
+
+<h2>Directions</h2>
+<%= link_to 'Add', new_recipe_step_path(@recipe) %>
+
+<ol>
+  <%= render partial: 'steps/list_item', collection: @recipe.steps, as: :step %>
+</ol>
+

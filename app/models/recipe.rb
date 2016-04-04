@@ -4,6 +4,4 @@ class Recipe < ActiveRecord::Base
   has_many :steps
 
   validates :name, presence: true
-
-  default_scope { order(sequence: :asc) }
 end

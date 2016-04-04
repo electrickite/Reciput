@@ -1,0 +1,9 @@
+<%= simple_form_for [@recipe, @step] do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :sequence %>
+  <%= f.input :directions %>
+
+  <%= f.button :submit %>
+  <%= link_to 'Cancel', :back, class: 'btn btn-link' %>
+<% end %>

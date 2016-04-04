@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :recipes do
     resources :ingredients, except: [:index, :show]
+    resources :steps, except: [:index, :show]
   end
 
   resources :foods
