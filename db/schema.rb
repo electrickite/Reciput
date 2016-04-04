@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404021234) do
+ActiveRecord::Schema.define(version: 20160404022027) do
 
   create_table "foods", force: :cascade do |t|
     t.string   "name",        null: false
@@ -62,10 +62,16 @@ ActiveRecord::Schema.define(version: 20160404021234) do
   add_index "steps", ["sequence"], name: "index_steps_on_sequence"
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",   null: false
-    t.string   "email",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "username",                       null: false
+    t.string   "email",                          null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "encrypted_password", limit: 128
+    t.string   "confirmation_token", limit: 128
+    t.string   "remember_token",     limit: 128
   end
+
+  add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end
