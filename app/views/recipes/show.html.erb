@@ -1,4 +1,9 @@
-<h1><%= @recipe.name %></h1>
+<h1>
+  <%= @recipe.name %>
+  <%- if @recipe.user.present? %>
+    <small>by <%= @recipe.user.username %></small>
+  <%- end %>
+</h1>
 
 <div class="pull-right">
   <%= link_to 'Edit', edit_recipe_path(@recipe) %> |

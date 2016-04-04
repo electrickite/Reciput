@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402185306) do
+ActiveRecord::Schema.define(version: 20160404021234) do
 
   create_table "foods", force: :cascade do |t|
     t.string   "name",        null: false
@@ -42,11 +42,13 @@ ActiveRecord::Schema.define(version: 20160402185306) do
     t.text     "equipment"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
 
   add_index "recipes", ["active_time"], name: "index_recipes_on_active_time"
   add_index "recipes", ["name"], name: "index_recipes_on_name"
   add_index "recipes", ["total_time"], name: "index_recipes_on_total_time"
+  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"
 
   create_table "steps", force: :cascade do |t|
     t.integer  "recipe_id"
@@ -58,5 +60,12 @@ ActiveRecord::Schema.define(version: 20160402185306) do
 
   add_index "steps", ["recipe_id"], name: "index_steps_on_recipe_id"
   add_index "steps", ["sequence"], name: "index_steps_on_sequence"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username",   null: false
+    t.string   "email",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
