@@ -4,8 +4,6 @@ gem 'rails', '4.2.6'
 gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -18,6 +16,15 @@ gem 'active_link_to'
 gem 'clearance'
 gem 'pundit'
 
+gem 'mysql2', group: :mysql
+gem 'pg', group: :postgres
+
+group :production do
+  gem 'rails_12factor'
+  gem 'puma'
+  #gem 'therubyracer', platforms: :ruby
+end
+
 group :development, :test do
   gem 'byebug'
   gem 'dotenv-rails'
@@ -26,5 +33,8 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-passenger'
 end
 
