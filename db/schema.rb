@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(version: 20160402185306) do
 
   create_table "steps", force: :cascade do |t|
     t.integer  "recipe_id"
-    t.text     "directions"
-    t.integer  "sequence"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "directions",             null: false
+    t.integer  "sequence",   default: 0, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "steps", ["recipe_id"], name: "index_steps_on_recipe_id"
