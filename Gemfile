@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.6'
-gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
@@ -26,6 +25,7 @@ group :production do
 end
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'byebug'
   gem 'dotenv-rails'
 end
