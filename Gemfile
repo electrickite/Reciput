@@ -16,6 +16,7 @@ gem 'simple_form', '~> 3.1.0'
 gem 'active_link_to'
 gem 'clearance'
 gem 'pundit'
+gem 'dotenv-rails'
 
 gem 'mysql2', group: :mysql
 gem 'pg', group: :postgres
@@ -28,7 +29,6 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
-  gem 'dotenv-rails'
 end
 
 group :development do
