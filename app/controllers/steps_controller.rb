@@ -5,6 +5,7 @@ class StepsController < ApplicationController
   # GET /steps/new
   def new
     @step = Step.new
+    set_recipe_on_step
     authorize @step
 
     if @recipe.steps.present?
@@ -20,6 +21,7 @@ class StepsController < ApplicationController
   # POST /steps.json
   def create
     @step = Step.new(step_params)
+    set_recipe_on_step
     authorize @step
 
     respond_to do |format|
@@ -66,6 +68,10 @@ class StepsController < ApplicationController
 
     def set_recipe
       @recipe = Recipe.find(params[:recipe_id])
+    end
+
+    def set_recipe_on_step
+      @step.recipe = @recipe
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

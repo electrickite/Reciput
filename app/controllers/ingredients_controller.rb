@@ -5,6 +5,7 @@ class IngredientsController < ApplicationController
   # GET /ingredients/new
   def new
     @ingredient = Ingredient.new
+    set_ingredient_recipe
     authorize @ingredient
   end
 
@@ -16,6 +17,7 @@ class IngredientsController < ApplicationController
   # POST /ingredients.json
   def create
     @ingredient = Ingredient.new(ingredient_params)
+    set_ingredient_recipe
     authorize @ingredient
 
     respond_to do |format|
@@ -62,6 +64,10 @@ class IngredientsController < ApplicationController
 
     def set_recipe
       @recipe = Recipe.find(params[:recipe_id])
+    end
+
+    def set_ingredient_recipe
+      @ingredient.recipe = @recipe
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

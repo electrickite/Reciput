@@ -4,7 +4,7 @@ class IngredientPolicy < ApplicationPolicy
   end
 
   def update?
-    record.recipe.user == user
+    signed_in? && record.recipe.user == user
   end
 
   def destroy?

@@ -1,10 +1,10 @@
 class RecipePolicy < ApplicationPolicy
   def create?
-    true
+    signed_in?
   end
 
   def update?
-    @record.user == @user
+    signed_in? && @record.user == @user
   end
 
   def destroy?

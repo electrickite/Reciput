@@ -1,10 +1,10 @@
 class FoodPolicy < ApplicationPolicy
   def create?
-    true
+    signed_in?
   end
 
   def update?
-    true
+    signed_in?
   end
 
   def destroy?

@@ -4,4 +4,4 @@
 
 <br>
 
-<%= link_to 'New Recipe', new_recipe_path, class: 'btn btn-primary' %>
+<%= link_to 'New Recipe', new_recipe_path, class: 'btn btn-primary' if policy(Recipe).create? %>

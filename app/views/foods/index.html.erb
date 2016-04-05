@@ -10,13 +10,16 @@
   </thead>
 
   <tbody>
-    <% @foods.each do |food| %>
+    <% if @foods.each do |food| %>
       <tr>
         <td><%= link_to food.name, food %></td>
         <td><%= food.description %></td>
-        <td>
-          <%= link_to 'Edit', edit_food_path(food) %> | 
-          <%= link_to 'Delete', food, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td><%= food_actions food %></td>
+      </tr>
+    <% end.empty? %>
+      <tr>
+        <td colspan="7">
+          No foods have been added. <%= link_to('Add one?', new_food_path) if policy(Food).create? %>
         </td>
       </tr>
     <% end %>
@@ -25,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New food', new_food_path, class: 'btn btn-primary' %>
+<%= link_to('New food', new_food_path, class: 'btn btn-primary') if policy(Food).create? %>

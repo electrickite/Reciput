@@ -50,4 +50,10 @@ class ApplicationPolicy
       scope
     end
   end
+
+  private
+
+    def signed_in?
+      user.present?
+    end
 end

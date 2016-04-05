@@ -6,8 +6,7 @@
 </h1>
 
 <div class="pull-right">
-  <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-  <%= link_to 'Back', recipes_path %>
+  <%= recipe_actions @recipe, recipes_path %>
 </div>
 
 <%= simple_format @recipe.description %>
@@ -55,18 +54,26 @@
 <%- end %>
 
 <h2>Ingredients</h2>
-<%= link_to 'Add', new_recipe_ingredient_path(@recipe) %>
+<%= link_to 'Add', new_recipe_ingredient_path(@recipe) if policy(@recipe).update? %>
 
-<ul class="list-unstyled">
-  <%= render partial: 'ingredients/list_item', collection: @recipe.ingredients, as: :ingredient %>
-</ul>
+<%- if @recipe.ingredients.present? %>
+  <ul class="list-unstyled">
+    <%= render partial: 'ingredients/list_item', collection: @recipe.ingredients, as: :ingredient %>
+  </ul>
+<%- else %>
+  <p>No ingredients have been added to this recipe.</p>
+<%- end %>
 
 <hr>
 
 <h2>Directions</h2>
-<%= link_to 'Add', new_recipe_step_path(@recipe) %>
+<%= link_to 'Add', new_recipe_step_path(@recipe) if policy(@recipe).update?  %>
 
-<ol>
-  <%= render partial: 'steps/list_item', collection: @recipe.steps, as: :step %>
-</ol>
+<%- if @recipe.steps.present? %>
+  <ol>
+    <%= render partial: 'steps/list_item', collection: @recipe.steps, as: :step %>
+  </ol>
+<%- else %>
+  <p>No directions have been added to this recipe.</p>
+<%- end %>
 

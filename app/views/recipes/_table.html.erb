@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-    <% @recipes.each do |recipe| %>
+    <% if @recipes.each do |recipe| %>
       <tr>
         <td><%= link_to recipe.name, recipe %></td>
         <td><%= recipe.description %></td>
@@ -20,9 +20,12 @@
         <td><%= format_time recipe.total_time %></td>
         <td><%= recipe.yield %></td>
         <td><%= recipe.equipment %></td>
-        <td>
-          <%= link_to 'Edit', edit_recipe_path(recipe) %> | 
-          <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td><%= recipe_actions recipe %></td>
+      </tr>
+    <% end.empty? %>
+      <tr>
+        <td colspan="7">
+          There are currently no recipes. <%= link_to('Create one?', new_recipe_path) if policy(Recipe).create? %>
         </td>
       </tr>
     <% end %>

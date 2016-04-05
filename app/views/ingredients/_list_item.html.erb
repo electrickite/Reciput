@@ -2,8 +2,5 @@
   <%= format_amount ingredient.amount %>
   <%= ingredient.unit %>
   <%= ingredient.name %><%= ", #{ingredient.notes}" if ingredient.notes.present? %>
-  <small>
-    <%= link_to 'Edit', edit_recipe_ingredient_path(@recipe, ingredient) %> |
-    <%= link_to 'Remove', recipe_ingredient_path(@recipe, ingredient), method: :delete, data: { confirm: 'Are you sure?' } %>
-  </small>
+  <small><%= ingredient_actions ingredient %></small>
 </li>
