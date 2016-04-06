@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def flash_message_types
+    ['success', 'error', 'alert', 'notice']
+  end
+
   def alert_class_for flash_type
     case flash_type
       when 'success'

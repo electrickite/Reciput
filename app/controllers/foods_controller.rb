@@ -30,7 +30,8 @@ class FoodsController < ApplicationController
 
     respond_to do |format|
       if @food.save
-        format.html { redirect_to @food, notice: 'food was successfully created.' }
+        flash[:html_safe] = true
+        format.html { redirect_to @food, notice: "Food was successfully created. #{view_context.link_to 'Add another?', new_food_path}" }
         format.json { render :show, status: :created, location: @food }
       else
         format.html { render :new }
@@ -44,7 +45,7 @@ class FoodsController < ApplicationController
   def update
     respond_to do |format|
       if @food.update(food_params)
-        format.html { redirect_to @food, notice: 'food was successfully updated.' }
+        format.html { redirect_to @food, notice: 'Food was successfully updated.' }
         format.json { render :show, status: :ok, location: @food }
       else
         format.html { render :edit }
@@ -58,7 +59,7 @@ class FoodsController < ApplicationController
   def destroy
     @food.destroy
     respond_to do |format|
-      format.html { redirect_to foods_url, notice: 'food was successfully destroyed.' }
+      format.html { redirect_to foods_url, notice: 'Food was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
