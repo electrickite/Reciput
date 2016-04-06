@@ -17,6 +17,7 @@ gem 'active_link_to'
 gem 'clearance'
 gem 'pundit'
 gem 'dotenv-rails'
+gem 'chosen-rails'
 
 gem 'mysql2', group: :mysql
 gem 'pg', group: :postgres
