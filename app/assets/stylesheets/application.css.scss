@@ -17,4 +17,6 @@
 
 @import "welcome";
 
-input, select, textarea { font-size: 16px; }
+input, input.form-control,
+select, select.form-control,
+textarea, textarea.form-control { font-size: 16px; }
