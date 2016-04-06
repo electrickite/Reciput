@@ -1,2 +1,2 @@
-<h1>Edit ingredient for <%= @recipe.name %></h1>
+<%- content_for(:title) {"Edit ingredient for #{@recipe.name}"} -%>
 <%= render 'form' %>

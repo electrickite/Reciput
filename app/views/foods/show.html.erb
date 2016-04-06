@@ -1,4 +1,4 @@
-<h1><%= @food.name %></h1>
+<%- content_for(:title) { @food.name } -%>
 
 <div class="pull-right">
   <%= food_actions @food, foods_path %>

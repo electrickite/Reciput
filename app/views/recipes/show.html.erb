@@ -1,9 +1,9 @@
-<h1>
-  <%= @recipe.name %>
+<%- content_for(:title) { @recipe.name } %>
+<%- content_for(:subtitle) do %>
   <%- if @recipe.user.present? %>
     <small>by <%= @recipe.user.username %></small>
   <%- end %>
-</h1>
+<%- end %>
 
 <div class="pull-right">
   <%= recipe_actions @recipe, recipes_path %>

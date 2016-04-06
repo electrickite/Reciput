@@ -1,4 +1,11 @@
-<h1>Listing Foods</h1>
+<%- content_for(:title) { 'Listing Foods' } -%>
+<%- content_for(:header) do %>
+  <%- if policy(Food).create? %>
+    <%= link_to new_food_path, class: 'btn btn-success pull-right' do %>
+      <span class="glyphicon glyphicon-plus"></span> New food
+    <% end %>
+  <%- end %>
+<%- end %>
 
 <table class="table table-striped">
   <thead>
@@ -27,5 +34,3 @@
 </table>
 
 <br>
-
-<%= link_to('New food', new_food_path, class: 'btn btn-primary') if policy(Food).create? %>

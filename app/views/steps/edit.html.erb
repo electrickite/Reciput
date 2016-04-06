@@ -1,2 +1,2 @@
-<h1>Edit step <%= @step.number %> for <%= @recipe.name %></h1>
+<%- content_for(:title) {"Edit step #{@step.number} for #{@recipe.name}"} %>
 <%= render 'form' %>

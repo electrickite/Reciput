@@ -6,7 +6,13 @@
   <%= render 'navbar' %>
 
   <div class="container">
-    <%= render "flash_messages" %> 
+    <%= render "flash_messages" %>
+
+    <div class="page-header">
+      <%= yield :header %>
+      <h1><%= yield :title %> <%= yield :subtitle %></h1>
+    </div>
+
     <%= yield %>
   </div>
 

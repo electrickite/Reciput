@@ -1,3 +1,3 @@
-<h1>Editing <%= @food.name %></h1>
+<%- content_for(:title) { "Editing #{@food.name}" } -%>
 
 <%= render 'form' %>

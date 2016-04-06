@@ -1,7 +1,10 @@
-<h1>Listing Recipes</h1>
+<%- content_for(:title) {"Listing recipes"} -%>
+<%- content_for(:header) do %>
+  <%- if policy(Recipe).create? %>
+    <%= link_to new_recipe_path, class: 'btn btn-success pull-right' do %>
+      <span class="glyphicon glyphicon-plus"></span> New recipe
+    <% end %>
+  <%- end %>
+<%- end %>
 
 <%= render 'table' %>
-
-<br>
-
-<%= link_to 'New Recipe', new_recipe_path, class: 'btn btn-primary' if policy(Recipe).create? %>
