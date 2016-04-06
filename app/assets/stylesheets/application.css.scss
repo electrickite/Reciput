@@ -13,9 +13,11 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "chosen_bootstrap";
+@import "selectize";
+@import "selectize.bootstrap3";
 
 @import "welcome";
+@import "ingredients";
 
 input, input.form-control,
 select, select.form-control,

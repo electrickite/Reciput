@@ -13,16 +13,16 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require chosen-jquery
+//= require selectize
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function() {
-
-  $('.chosen-select').chosen({
-    allow_single_deselect: true,
-    disable_search_threshold: 8,
-    width: '100%'
+var init = function() {
+  $('.selectize-single').selectize({
+    highlight: true,
+    sortField: 'text'
   });
+};
 
-});
+$(document).ready(init);
+$(document).on('page:load', init);
