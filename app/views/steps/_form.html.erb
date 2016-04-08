@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <%= f.input :sequence %>
-  <%= f.input :directions %>
+  <%= f.input :directions, :input_html => {:rows => 5} %>
 
   <%= f.button :submit %>
   <%= link_to 'Cancel', :back, class: 'btn btn-link' %>
