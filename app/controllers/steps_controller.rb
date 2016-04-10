@@ -26,6 +26,7 @@ class StepsController < ApplicationController
 
     respond_to do |format|
       if @step.save
+        flash[:html_safe] = true
         format.html { redirect_to @step.recipe, notice: "New step was successfully created. #{view_context.link_to 'Add another?', new_recipe_step_path(@recipe)}" }
         format.json { render @step, status: :created, location: @step.recipe }
       else

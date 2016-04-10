@@ -22,6 +22,7 @@ class IngredientsController < ApplicationController
 
     respond_to do |format|
       if @ingredient.save
+        flash[:html_safe] = true
         format.html { redirect_to @ingredient.recipe, notice: "Ingredient was successfully created. #{view_context.link_to 'Add another?', new_recipe_ingredient_path(@recipe)}" }
         format.json { render @ingredient, status: :created, location: @ingredient.recipe }
       else
