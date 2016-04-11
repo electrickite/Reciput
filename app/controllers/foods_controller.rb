@@ -4,7 +4,8 @@ class FoodsController < ApplicationController
   # GET /foods
   # GET /foods.json
   def index
-    @foods = Food.all
+    @q = Food.order(:name).ransack(params[:q])
+    @foods = @q.result(distinct: true).page(params[:page])
   end
 
   # GET /foods/1

@@ -1,4 +1,4 @@
-<%- content_for(:title) {"Listing recipes"} -%>
+<%- content_for(:title) {"Recipes"} -%>
 <%- content_for(:header) do %>
   <%- if policy(Recipe).create? %>
     <%= link_to new_recipe_path, class: 'btn btn-success pull-right' do %>

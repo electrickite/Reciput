@@ -18,6 +18,8 @@ gem 'clearance'
 gem 'pundit'
 gem 'dotenv-rails'
 gem 'selectize-rails'
+gem 'kaminari'
+gem 'ransack'
 
 gem 'mysql2', group: :mysql
 gem 'pg', group: :postgres

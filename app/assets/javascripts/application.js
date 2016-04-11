@@ -14,6 +14,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require selectize
+//= require footable
 //= require turbolinks
 //= require_tree .
 
@@ -22,6 +23,8 @@ var init = function() {
     highlight: true,
     sortField: 'text'
   });
+
+  $('.table').footable();
 };
 
 $(document).ready(init);

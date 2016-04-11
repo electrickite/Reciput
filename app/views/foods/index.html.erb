@@ -1,4 +1,4 @@
-<%- content_for(:title) { 'Listing Foods' } -%>
+<%- content_for(:title) { 'Foods' } -%>
 <%- content_for(:header) do %>
   <%- if policy(Food).create? %>
     <%= link_to new_food_path, class: 'btn btn-success pull-right' do %>
@@ -10,9 +10,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
+      <th><%= sort_link @q, :name, 'Name' %></th>
       <th>Description</th>
-      <th><span class="sr-only">Actions</span></th>
+      <th data-breakpoints="xs">Actions</th>
     </tr>
   </thead>
 
@@ -33,4 +33,4 @@
   </tbody>
 </table>
 
-<br>
+<%= paginate @foods %>
