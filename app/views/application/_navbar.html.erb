@@ -16,6 +16,8 @@
         <%= active_link_to 'Foods', foods_path, :wrap_tag => :li %>
       </ul>
 
+      <%= yield :navbar %>
+
       <ul class="nav navbar-nav navbar-right">
         <%- if current_user %>
           <li class="dropdown">

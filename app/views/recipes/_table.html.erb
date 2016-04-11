@@ -1,12 +1,12 @@
 <table id="recipes_list" class="table table-striped">
   <thead>
     <tr>
-      <th><%= sort_link @q, :name, 'Name' %></th>
+      <th data-type="html"><%= sort_link @q, :name, 'Name' %></th>
       <th>Description</th>
       <th data-breakpoints="xs sm"><%= sort_link @q, :active_time, 'Active time' %></th>
       <th data-breakpoints="xs"><%= sort_link @q, :total_time, 'Total time' %></th>
       <th data-breakpoints="xs sm md">Yield</th>
-      <th data-breakpoints="xs">Actions</th>
+      <th data-type="html" data-breakpoints="xs">Actions</th>
     </tr>
   </thead>
 

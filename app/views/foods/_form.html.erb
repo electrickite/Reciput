@@ -1,4 +1,4 @@
-<%= simple_form_for @food do |f| %>
+<%= simple_form_for @food, html: { class: 'resource-form' } do |f| %>
   <%= f.error_notification %>
 
   <%= f.input :name %>

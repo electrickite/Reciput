@@ -1,4 +1,4 @@
-<%= simple_form_for [@recipe, @ingredient], html: {class: 'form-inline'} do |f| %>
+<%= simple_form_for [@recipe, @ingredient], html: {class: 'form-inline resource-form'} do |f| %>
   <%= f.error_notification %>
 
   <%= f.input :amount, placeholder: 'Amount', label_html: {class: 'sr-only'} %>

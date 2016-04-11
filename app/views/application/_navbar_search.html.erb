@@ -1,0 +1,23 @@
+<%- model_name = model.model_name.human.downcase %>
+<%= search_form_for @q, html: { class: 'navbar-form navbar-left' } do |f| %>
+  <div class="form-group">
+    <div class="input-group">
+      <%= f.label query, class: 'sr-only' %>
+      <%= f.search_field query, class: 'form-control', placeholder: "Search #{model_name.pluralize}..." %>
+
+      <span class="input-group-btn">
+        <%= f.button class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-search"></span><span class="sr-only">Go!</span>
+        <% end %>
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%- if policy(model).create? %>
+      <%= link_to new_polymorphic_path(model), class: 'btn btn-info form-control' do %>
+        <span class="glyphicon glyphicon-plus"></span> New <%= model_name %>
+      <% end %>
+    <%- end %>
+  </div>
+<% end %>

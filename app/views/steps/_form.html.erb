@@ -1,4 +1,4 @@
-<%= simple_form_for [@recipe, @step] do |f| %>
+<%= simple_form_for [@recipe, @step], html: { class: 'resource-form' } do |f| %>
   <%= f.error_notification %>
 
   <%= f.input :sequence %>

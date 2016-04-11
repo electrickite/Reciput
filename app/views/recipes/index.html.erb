@@ -1,10 +1,7 @@
 <%- content_for(:title) {"Recipes"} -%>
-<%- content_for(:header) do %>
-  <%- if policy(Recipe).create? %>
-    <%= link_to new_recipe_path, class: 'btn btn-success pull-right' do %>
-      <span class="glyphicon glyphicon-plus"></span> New recipe
-    <% end %>
-  <%- end %>
+
+<%- content_for(:navbar) do %>
+  <%= render partial: 'navbar_search', locals: { query: :name_or_description_cont, model: Recipe } %>
 <%- end %>
 
 <%= render 'table' %>
