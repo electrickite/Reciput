@@ -2,6 +2,9 @@
   <%= f.error_notification %>
 
   <%= f.input :name %>
+  <%- if policy(@recipe).change_owner? %>
+    <%= f.association :owner, input_html: { class: 'selectize-single' } %>
+  <%- end %>
   <%= f.input :description, :input_html => {:rows => 5} %>
   <%= f.input :yield %>
   <%= f.input :active_time %>

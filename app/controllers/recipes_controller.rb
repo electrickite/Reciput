@@ -44,8 +44,14 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1
   # PATCH/PUT /recipes/1.json
   def update
+    update_params = recipe_params
+
+    if policy(@recipe).change_owner?
+      update_params.merge! params.require(:recipe).permit(:owner_id)
+    end
+
     respond_to do |format|
-      if @recipe.update(recipe_params)
+      if @recipe.update(update_params)
         format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
         format.json { render :show, status: :ok, location: @recipe }
       else
@@ -74,6 +80,7 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:name, :description, :active_time, :total_time, :yield, :equipment, user_ids: [])
+      permitted_params = params.require(:recipe).permit(:name, :description,
+        :active_time, :total_time, :yield, :equipment, user_ids: [])
     end
 end

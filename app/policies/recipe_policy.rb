@@ -4,10 +4,14 @@ class RecipePolicy < ApplicationPolicy
   end
 
   def update?
-    signed_in? && @record.editors.include?(@user)
+    signed_in? && record.editors.include?(user)
+  end
+
+  def change_owner?
+    signed_in? && record.owner == user
   end
 
   def destroy?
-    update?
+    change_owner?
   end
 end
