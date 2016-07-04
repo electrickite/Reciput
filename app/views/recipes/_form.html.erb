@@ -7,6 +7,7 @@
   <%= f.input :active_time %>
   <%= f.input :total_time %>
   <%= f.input :equipment %>
+  <%= f.association :users, label: 'Share with', input_html: { class: 'selectize-single' } %>
 
   <%= f.button :submit %>
   <%= link_to 'Cancel', :back, class: 'btn btn-link' %>

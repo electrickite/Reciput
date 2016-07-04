@@ -27,7 +27,7 @@ class RecipesController < ApplicationController
   # POST /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.user = current_user if signed_in?
+    @recipe.owner = current_user if signed_in?
     authorize @recipe
 
     respond_to do |format|
@@ -74,6 +74,6 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:name, :description, :active_time, :total_time, :yield, :equipment)
+      params.require(:recipe).permit(:name, :description, :active_time, :total_time, :yield, :equipment, user_ids: [])
     end
 end

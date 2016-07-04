@@ -4,7 +4,7 @@ class StepPolicy < ApplicationPolicy
   end
 
   def update?
-    signed_in? && record.recipe.user == user
+    signed_in? && record.recipe.owner == user
   end
 
   def destroy?

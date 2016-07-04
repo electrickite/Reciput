@@ -4,7 +4,7 @@ class RecipePolicy < ApplicationPolicy
   end
 
   def update?
-    signed_in? && @record.user == @user
+    signed_in? && @record.editors.include?(@user)
   end
 
   def destroy?

@@ -1,7 +1,7 @@
 <%- content_for(:title) { @recipe.name } %>
 <%- content_for(:subtitle) do %>
-  <%- if @recipe.user.present? %>
-    <small>by <%= @recipe.user.username %></small>
+  <%- if @recipe.owner.present? %>
+    <small>by <%= @recipe.owner %></small>
   <%- end %>
 <%- end %>
 
