@@ -1,6 +1,6 @@
 module RecipesHelper
   def format_time(time)
-    distance_of_time_in_words(time.to_i * 60)
+    distance_of_time(time.to_i * 60)
   end
 
   def format_amount(amount=0)

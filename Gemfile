@@ -20,6 +20,7 @@ gem 'dotenv-rails'
 gem 'selectize-rails'
 gem 'kaminari'
 gem 'ransack'
+gem 'dotiw'
 
 gem 'mysql2', group: :mysql
 gem 'pg', group: :postgres
