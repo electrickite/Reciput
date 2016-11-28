@@ -1,0 +1,14 @@
+<div class="dropdown">
+  <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="ingredient-modifier" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <span class="glyphicon glyphicon-sort" aria-hidden="true"></span>
+    <span class="sr-only">Modify ingredients</span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="ingredient-modifier">
+    <li class="dropdown-header" aria-hidden="true">Modify ingredients</li>
+    <li><%= link_to 'Original size', recipe_path(recipe) %></li>
+    <%- [3, 2, 0.75, 0.666, 0.5, 0.333, 0.25].each do |size| %>
+      <%- link_text = "#{number_to_fraction(size)}#{' times' if size > 1} size" %>
+      <li><%= link_to link_text, recipe_path(recipe, mod: size) %></li>
+    <%- end %>
+  </ul>
+</div>

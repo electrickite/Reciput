@@ -53,12 +53,16 @@
   </p>
 <%- end %>
 
-<h2>Ingredients</h2>
+<div class="heading-menu">
+  <h2>Ingredients</h2>
+  <%= render 'modifier_menu', recipe: @recipe %>
+</div>
+
 <%= link_to 'Add', new_recipe_ingredient_path(@recipe) if policy(@recipe).update? %>
 
 <%- if @recipe.ingredients.present? %>
   <ul class="list-unstyled">
-    <%= render partial: 'ingredients/list_item', collection: @recipe.ingredients, as: :ingredient %>
+    <%= render partial: 'ingredients/list_item', collection: @recipe.ingredients, as: :ingredient, locals: { modifier: @modifier } %>
   </ul>
 <%- else %>
   <p>No ingredients have been added to this recipe.</p>

@@ -33,6 +33,8 @@ textarea, textarea.form-control { font-size: 16px; }
 
 .resource-form { margin-bottom:20px; }
 
+.heading-menu > .dropdown { display:inline-block; vertical-align:text-bottom; }
+.heading-menu > h2, .heading-menu > h3 { display:inline-block; }
 
 /* Decrease header height on mobile */
 @media only screen and (max-width : 480px) {
