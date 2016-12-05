@@ -29,4 +29,4 @@ namespace :paperclip do
   end
 end
 
-after 'deploy:compile_assets', 'paperclip:build_missing_styles'
+after 'deploy:cleanup', 'paperclip:build_missing_styles'
