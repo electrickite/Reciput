@@ -1,4 +1,4 @@
 <li>
   <%= simple_format step.directions %>
-  <small><%= step_actions step %></small>
+  <%= render 'recipes/action_links', model: step %>
 </li>

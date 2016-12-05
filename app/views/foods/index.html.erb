@@ -18,7 +18,7 @@
       <tr>
         <td><%= link_to food.name, food %></td>
         <td><%= food.description %></td>
-        <td><%= food_actions food %></td>
+        <td><%= render 'action_buttons', model: food %></td>
       </tr>
     <% end.empty? %>
       <tr>

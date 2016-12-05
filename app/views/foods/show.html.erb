@@ -1,7 +1,8 @@
 <%- content_for(:title) { @food.name } -%>
-
-<div class="pull-right">
-  <%= food_actions @food, foods_path %>
-</div>
+<%- content_for(:actions) do %>
+  <div class="pull-right">
+    <%= render 'action_buttons', model: @food, back_path: foods_path %>
+  </div>
+<%- end %>
 
 <%= simple_format @food.description %>

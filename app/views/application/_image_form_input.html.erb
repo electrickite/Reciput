@@ -1,0 +1,9 @@
+<%- if model.image.present? %>
+  <div class="form-group optional recipe_image">
+    <label class="file optional control-label" for="recipe_image">Image</label>
+    <%= image_tag model.image.url(:medium), class: 'img-responsive' %>
+  </div>
+  <%= form.input :delete_image, as: :boolean %>
+<%- else %>
+  <%= form.input :image, as: :file %>
+<%- end %>

@@ -20,6 +20,9 @@
 !/log/.keep
 /tmp
 
+# Ignore attachments
+/public/system
+
 # Ignore history files
 .byebug_history
 

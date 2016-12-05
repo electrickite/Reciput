@@ -2,5 +2,5 @@
   <%= format_amount ingredient.amount(modifier) %>
   <%= ingredient.unit %>
   <%= ingredient.name %><%= ", #{ingredient.notes}" if ingredient.notes.present? %>
-  <small><%= ingredient_actions ingredient %></small>
+  <%= render 'recipes/action_links', model: ingredient %>
 </li>

@@ -13,12 +13,16 @@
   <tbody>
     <% if @recipes.each do |recipe| %>
       <tr>
-        <td><%= link_to recipe.name, recipe %></td>
+        <td>
+          <%= link_to recipe do -%>
+            <%= image_tag(recipe.image.url(:thumb), size: '50x50', alt: '', class: 'table-thumb') if recipe.image.present? %><%= recipe.name %>
+          <% end %>
+        </td>
         <td><%= truncate recipe.description, length: 30, separator: ' ' %></td>
         <td><%= format_time recipe.active_time %></td>
         <td><%= format_time recipe.total_time %></td>
         <td><%= recipe.yield %></td>
-        <td><%= recipe_actions recipe %></td>
+        <td><%= render 'action_buttons', model: recipe %></td>
       </tr>
     <% end.empty? %>
       <tr>

@@ -4,12 +4,19 @@
     <small>by <%= @recipe.owner %></small>
   <%- end %>
 <%- end %>
+<%- content_for(:actions) do %>
+  <div class="pull-right">
+    <%= render 'action_buttons', model: @recipe, back_path: recipes_path %>
+  </div>
+<%- end %>
 
-<div class="pull-right">
-  <%= recipe_actions @recipe, recipes_path %>
+<div class="row">
+  <%- if @recipe.image.present? %>
+    <%= image_tag @recipe.image.url(:medium), alt: '', class: 'pull-left' %>
+  <%- end %>
+
+  <%= simple_format @recipe.description %>
 </div>
-
-<%= simple_format @recipe.description %>
 
 <div class="row">
   <div class="col-md-4">
@@ -74,7 +81,7 @@
 <%= link_to 'Add', new_recipe_step_path(@recipe) if policy(@recipe).update?  %>
 
 <%- if @recipe.steps.present? %>
-  <ol>
+  <ol id="directions-list">
     <%= render partial: 'steps/list_item', collection: @recipe.steps, as: :step %>
   </ol>
 <%- else %>

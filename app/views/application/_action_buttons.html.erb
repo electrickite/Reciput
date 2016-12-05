@@ -1,0 +1,11 @@
+<div class="btn-group btn-group-xs" role="group">
+  <%- if policy(model).edit? %>
+    <%= link_to 'Edit', edit_polymorphic_path(model), class: 'btn btn-default' %>
+  <%- end %>
+  <%- if policy(model).destroy? %>
+    <%= link_to 'Delete', polymorphic_path(model), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+  <%- end %>
+  <%- if defined? back_path %>
+    <%= link_to 'Back', back_path, class: 'btn btn-default' %>
+  <%- end %>
+</div>

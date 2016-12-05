@@ -1,4 +1,6 @@
 class Recipe < ActiveRecord::Base
+  include Imageable
+
   has_many :ingredients, inverse_of: :recipe, dependent: :destroy
   has_many :foods, through: :ingredients
   has_many :steps, dependent: :destroy

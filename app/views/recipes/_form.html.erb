@@ -10,6 +10,9 @@
   <%= f.input :active_time %>
   <%= f.input :total_time %>
   <%= f.input :equipment %>
+
+  <%= render 'image_form_input', model: @recipe, form: f %>
+
   <%= f.association :users, label: 'Share with', input_html: { class: 'selectize-single' } %>
 
   <%= f.button :submit %>

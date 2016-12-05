@@ -1,0 +1,9 @@
+<small>
+  <%- if policy(model).edit? %>
+    <%= link_to 'Edit', polymorphic_path([model.recipe, model], action: :edit) %>
+  <%- end %>
+  <%- if policy(model).destroy? %>
+    <%- if policy(model).edit? %> | <%- end %>
+    <%= link_to 'Delete', polymorphic_path([model.recipe, model]), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%- end %>
+</small>

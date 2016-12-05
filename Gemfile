@@ -21,6 +21,7 @@ gem 'selectize-rails'
 gem 'kaminari'
 gem 'ransack'
 gem 'dotiw'
+gem 'paperclip', '~> 5.1'
 
 gem 'mysql2', group: :mysql
 gem 'pg', group: :postgres
