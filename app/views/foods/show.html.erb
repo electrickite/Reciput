@@ -5,4 +5,10 @@
   </div>
 <%- end %>
 
-<%= simple_format @food.description %>
+<div class="row">
+  <%- if @food.image.present? %>
+    <%= image_tag @food.image.url(:medium), alt: '', class: 'pull-right' %>
+  <%- end %>
+
+  <%= simple_format @food.description %>
+</div>

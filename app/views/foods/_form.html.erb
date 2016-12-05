@@ -3,6 +3,7 @@
 
   <%= f.input :name %>
   <%= f.input :description, :input_html => {:rows => 5} %>
+  <%= render 'image_form_input', model: @food, form: f %>
 
   <%= f.button :submit %>
   <%= link_to 'Cancel', :back, class: 'btn btn-link' %>
