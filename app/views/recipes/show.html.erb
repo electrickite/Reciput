@@ -11,11 +11,13 @@
 <%- end %>
 
 <div class="row">
-  <%- if @recipe.image.present? %>
-    <%= image_tag @recipe.image.url(:medium), alt: '', class: 'pull-right recipe-image' %>
-  <%- end %>
+  <div class="col-md-12">
+    <%- if @recipe.image.present? %>
+      <%= image_tag @recipe.image.url(:medium), alt: '', class: 'pull-right recipe-image' %>
+    <%- end %>
 
-  <%= simple_format @recipe.description %>
+    <%= simple_format @recipe.description %>
+  </div>
 </div>
 
 <div class="row">
