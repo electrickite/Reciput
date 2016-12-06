@@ -4,6 +4,7 @@
     <small>by <%= @recipe.owner %></small>
   <%- end %>
 <%- end %>
+<%- content_for(:opengraph_meta_tags) { render 'opengraph', object: @recipe } %>
 <%- content_for(:actions) do %>
   <div class="pull-right">
     <%= render 'action_buttons', model: @recipe, back_path: recipes_path %>

@@ -1,0 +1,10 @@
+<meta property="og:title" content="<%= object.name %>" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="<%= polymorphic_url object %>" />
+<meta property="og:site_name" content="Reciput" />
+<%- if object.image.present? %>
+  <meta property="og:image" content="<%= asset_url object.image.url(:medium) %>" />
+<%- end %>
+<%- if object.description %>
+  <meta property="og:description" content="<%= truncate object.description, length: 100, separator: ' ' %>" />
+<%- end %>
