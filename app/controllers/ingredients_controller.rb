@@ -1,6 +1,7 @@
 class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:edit, :update, :destroy]
   before_action :set_recipe, only: [:new, :create, :edit, :update]
+  before_action :find_or_create_food, only: [:create, :update]
 
   # GET /ingredients/new
   def new
@@ -76,5 +77,14 @@ class IngredientsController < ApplicationController
       params.require(:ingredient)
         .permit(:food_id, :amount, :unit, :notes)
         .merge(recipe_id: params[:recipe_id])
+    end
+
+    def find_or_create_food
+      food_id = ingredient_params[:food_id]
+
+      unless Food.find_by_id food_id
+        food = Food.where('LOWER(name) = ?', food_id.downcase).first || Food.create(name: food_id)
+        params[:ingredient][:food_id] = food.id
+      end
     end
 end

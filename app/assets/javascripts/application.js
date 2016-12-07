@@ -24,6 +24,12 @@ var init = function() {
     sortField: 'text'
   });
 
+  $('.selectize-single-create').selectize({
+    highlight: true,
+    sortField: 'text',
+    create: true
+  });
+
   $('.table').footable();
 };
 
