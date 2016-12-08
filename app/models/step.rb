@@ -1,22 +1,11 @@
 class Step < ActiveRecord::Base
-  belongs_to :recipe
+  include Sequenceable
 
-  before_create :set_sequence
+  belongs_to :recipe, inverse_of: :steps
 
-  validates :directions, :sequence, presence: true
-  validates :recipe, presence: true
-
-  default_scope { order(sequence: :asc) }
+  validates :recipe, :directions, presence: true
 
   def number
     recipe.steps.map(&:id).index(self.id).to_i + 1
-  end
-
-  private
-
-  def set_sequence
-    if self.sequence.zero? && recipe.steps.any?
-      self.sequence = recipe.steps.last.sequence.to_i + 1
-    end
   end
 end

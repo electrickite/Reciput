@@ -1,4 +1,6 @@
 class IngredientsController < ApplicationController
+  include Sortable
+
   before_action :set_ingredient, only: [:edit, :update, :destroy]
   before_action :set_recipe, only: [:new, :create, :edit, :update]
   before_action :find_or_create_food, only: [:create, :update]
@@ -55,18 +57,6 @@ class IngredientsController < ApplicationController
       format.html { redirect_to @ingredient.recipe, notice: 'Ingredient was successfully removed.' }
       format.json { head :no_content }
     end
-  end
-
-  # PUT /recipes/1/ingredients/sort
-  # PUT /recipes/1/ingredients/sort.json
-  def sort
-    params[:order].each do |key, value|
-      ingredient = Ingredient.find(value[:id])
-      authorize ingredient
-      ingredient.update(position: value[:sequence].to_i)
-    end
-
-    render nothing: true, status: 204
   end
 
   private

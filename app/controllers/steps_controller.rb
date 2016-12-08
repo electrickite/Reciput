@@ -1,4 +1,6 @@
 class StepsController < ApplicationController
+  include Sortable
+
   before_action :set_step, only: [:edit, :update, :destroy]
   before_action :set_recipe, only: [:new, :create, :edit, :update]
 
@@ -54,18 +56,6 @@ class StepsController < ApplicationController
       format.html { redirect_to @step.recipe, notice: 'Step was successfully removed.' }
       format.json { head :no_content }
     end
-  end
-
-  # PUT /recipes/1/steps/sort
-  # PUT /recipes/1/steps/sort.json
-  def sort
-    params[:order].each do |key, value|
-      step = Step.find(value[:id])
-      authorize step
-      step.update(sequence: value[:sequence].to_i)
-    end
-
-    render nothing: true, status: 204
   end
 
   private
