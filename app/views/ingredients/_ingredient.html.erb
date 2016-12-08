@@ -1,4 +1,4 @@
-<li>
+<li data-id="<%= ingredient.id %>">
   <%= format_amount ingredient.amount(modifier) %>
   <%= ingredient.unit %>
   <%= ingredient.name %><%= ", #{ingredient.notes}" if ingredient.notes.present? %>

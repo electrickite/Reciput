@@ -3,8 +3,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   resources :recipes do
-    resources :ingredients, except: [:index, :show]
-    resources :steps, except: [:index, :show]
+    resources :ingredients, except: [:index, :show] do
+      put :sort, on: :collection
+    end
+    resources :steps, except: [:index, :show] do
+      put :sort, on: :collection
+    end
   end
 
   resources :foods

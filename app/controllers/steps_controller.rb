@@ -7,10 +7,6 @@ class StepsController < ApplicationController
     @step = Step.new
     set_recipe_on_step
     authorize @step
-
-    if @recipe.steps.present?
-      @step.sequence = @recipe.steps.last.sequence + 1
-    end
   end
 
   # GET /steps/1/edit
@@ -58,6 +54,18 @@ class StepsController < ApplicationController
       format.html { redirect_to @step.recipe, notice: 'Step was successfully removed.' }
       format.json { head :no_content }
     end
+  end
+
+  # PUT /recipes/1/steps/sort
+  # PUT /recipes/1/steps/sort.json
+  def sort
+    params[:order].each do |key, value|
+      step = Step.find(value[:id])
+      authorize step
+      step.update(sequence: value[:sequence].to_i)
+    end
+
+    render nothing: true, status: 204
   end
 
   private

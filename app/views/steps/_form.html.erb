@@ -1,7 +1,6 @@
 <%= simple_form_for [@recipe, @step], html: { class: 'resource-form' } do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :sequence %>
   <%= f.input :directions, :input_html => {:rows => 5} %>
 
   <%= f.button :submit %>

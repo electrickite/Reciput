@@ -57,6 +57,18 @@ class IngredientsController < ApplicationController
     end
   end
 
+  # PUT /recipes/1/ingredients/sort
+  # PUT /recipes/1/ingredients/sort.json
+  def sort
+    params[:order].each do |key, value|
+      ingredient = Ingredient.find(value[:id])
+      authorize ingredient
+      ingredient.update(position: value[:sequence].to_i)
+    end
+
+    render nothing: true, status: 204
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ingredient

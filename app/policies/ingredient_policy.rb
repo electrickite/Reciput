@@ -10,4 +10,8 @@ class IngredientPolicy < ApplicationPolicy
   def destroy?
     update?
   end
+
+  def sort?
+    update?
+  end
 end

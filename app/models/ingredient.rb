@@ -2,7 +2,11 @@ class Ingredient < ActiveRecord::Base
   belongs_to :recipe
   belongs_to :food
 
-  validates :recipe, :food, presence: true
+  before_create :set_position
+
+  validates :recipe, :food, :position, presence: true
+
+  default_scope { order(position: :asc) }
 
   delegate :name, to: :food
   delegate :user, to: :recipe
@@ -12,6 +16,14 @@ class Ingredient < ActiveRecord::Base
       self[:amount]
     else
       modifier * self[:amount]
+    end
+  end
+
+  private
+
+  def set_position
+    if self.position.zero? && recipe.ingredients.any?
+      self.position = recipe.ingredients.last.position.to_i + 1
     end
   end
 end

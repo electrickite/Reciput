@@ -70,9 +70,9 @@
 
 <%= link_to 'Add', new_recipe_ingredient_path(@recipe) if policy(@recipe).update? %>
 
-<%- if @recipe.ingredients.present? %>
-  <ul class="list-unstyled">
-    <%= render partial: 'ingredients/list_item', collection: @recipe.ingredients, as: :ingredient, locals: { modifier: @modifier } %>
+<%- if @recipe.ingredients.any? %>
+  <ul id="ingredient-list" class="sortable list-unstyled" data-recipe-id="<%= @recipe.id %>">
+    <%= render @recipe.ingredients, modifier: @modifier %>
   </ul>
 <%- else %>
   <p>No ingredients have been added to this recipe.</p>
@@ -83,9 +83,9 @@
 <h2>Directions</h2>
 <%= link_to 'Add', new_recipe_step_path(@recipe) if policy(@recipe).update?  %>
 
-<%- if @recipe.steps.present? %>
-  <ol id="directions-list">
-    <%= render partial: 'steps/list_item', collection: @recipe.steps, as: :step %>
+<%- if @recipe.steps.any? %>
+  <ol id="step-list" class="sortable list-group" data-recipe-id="<%= @recipe.id %>">
+    <%= render @recipe.steps %>
   </ol>
 <%- else %>
   <p>No directions have been added to this recipe.</p>

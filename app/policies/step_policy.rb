@@ -10,4 +10,8 @@ class StepPolicy < ApplicationPolicy
   def destroy?
     update?
   end
+
+  def sort?
+    update?
+  end
 end

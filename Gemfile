@@ -22,6 +22,7 @@ gem 'kaminari'
 gem 'ransack'
 gem 'dotiw'
 gem 'paperclip', '~> 5.1'
+gem 'js-routes'
 
 gem 'mysql2', group: :mysql
 gem 'pg', group: :postgres
