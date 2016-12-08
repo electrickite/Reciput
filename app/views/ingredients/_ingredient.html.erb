@@ -1,4 +1,5 @@
 <li data-id="<%= ingredient.id %>">
+  <span class="grippy" aria-hidden="true"></span>
   <%= format_amount ingredient.amount(modifier) %>
   <%= ingredient.unit %>
   <%= ingredient.name %><%= ", #{ingredient.notes}" if ingredient.notes.present? %>

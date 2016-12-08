@@ -1,9 +1,10 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-var update_recipe_list_order = function(el, route) {
+var update_recipe_list_order = function(el) {
   var updated_order = [],
-      recipe_id = $(el).data('recipe-id');
+      recipe_id = $(el).data('recipe-id'),
+      route = $(el).data('route');
 
   $(el).find('li').each(function(i) {
     updated_order.push({ id: $(this).data('id'), sequence: i });
@@ -18,20 +19,13 @@ var update_recipe_list_order = function(el, route) {
 };
 
 var recipe_ready = function() {
-  $('#step-list.sortable').each(function() {
+  $('#step-list.sortable, #ingredient-list.sortable').each(function() {
     var self = this;
     Sortable.create(self, {
+      draggable: 'li',
+      handle: '.grippy',
       onUpdate: function() {
-        update_recipe_list_order(self, 'sort_recipe_steps_path');
-      }
-    });
-  });
-
-  $('#ingredient-list.sortable').each(function() {
-    var self = this;
-    Sortable.create(self, {
-      onUpdate: function() {
-        update_recipe_list_order(self, 'sort_recipe_ingredients_path');
+        update_recipe_list_order(self);
       }
     });
   });

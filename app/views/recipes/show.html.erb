@@ -68,7 +68,7 @@
   <%= render 'modifier_menu', recipe: @recipe %>
 </div>
 <%- if @recipe.ingredients.any? %>
-  <ul id="ingredient-list" class="<%= 'sortable ' if policy(@recipe).update? %>list-unstyled" data-recipe-id="<%= @recipe.id %>">
+  <ul id="ingredient-list" class="<%= 'sortable ' if policy(@recipe).update? %>list-unstyled" data-recipe-id="<%= @recipe.id %>" data-route="sort_recipe_ingredients_path">
     <%= render @recipe.ingredients, modifier: @modifier %>
   </ul>
 <%- else %>
@@ -81,7 +81,7 @@
 
 <h2>Directions</h2>
 <%- if @recipe.steps.any? %>
-  <ol id="step-list" class="<%= 'sortable ' if policy(@recipe).update? %>list-group" data-recipe-id="<%= @recipe.id %>">
+  <ol id="step-list" class="<%= 'sortable ' if policy(@recipe).update? %>list-group" data-recipe-id="<%= @recipe.id %>" data-route="sort_recipe_steps_path">
     <%= render @recipe.steps %>
   </ol>
 <%- else %>

@@ -20,6 +20,9 @@
 //= require turbolinks
 //= require_tree .
 
+// Patch iOS 10 touchmove event
+window.addEventListener( 'touchmove', function() {})
+
 var init = function() {
   $('.selectize-single').selectize({
     highlight: true,
