@@ -16,4 +16,10 @@ class Ingredient < ActiveRecord::Base
       modifier * self[:amount]
     end
   end
+
+  def amount=(value)
+    self[:amount] = value.to_s.gsub(/\s+/, '').to_r.to_f
+  rescue ZeroDivisionError
+    self[:amount] = 0.0
+  end
 end

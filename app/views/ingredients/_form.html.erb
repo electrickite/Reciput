@@ -1,7 +1,7 @@
 <%= simple_form_for [@recipe, @ingredient], html: {class: 'form-inline resource-form'} do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :amount, placeholder: 'Amount', label_html: {class: 'sr-only'} %>
+  <%= f.input :amount, placeholder: 'Amount', as: :string, label_html: {class: 'sr-only'} %>
   <%= f.input :unit, placeholder: 'Unit', label_html: {class: 'sr-only'} %>
   <%= f.association :food, prompt: 'Food',
     label_html: { class: 'sr-only' },
