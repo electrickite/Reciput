@@ -4,8 +4,6 @@
 
 .recipe-image { margin-bottom:20px; }
 
-.action-links { margin-left:6px; }
-
 ol.list-group {
     list-style: decimal inside;
 }
@@ -15,3 +13,4 @@ ol .list-group-item {
 }
 
 #ingredient-list li { line-height:1.5em; }
+#ingredient-list .action-links { margin-left:6px; }
