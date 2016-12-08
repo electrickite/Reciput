@@ -1,5 +1,7 @@
 <li class="list-group-item" data-id="<%= step.id %>">
   <%= simple_format step.directions %>
-  <span class="grippy" aria-hidden="true"></span>
-  <%= render 'recipes/action_links', model: step %>
+  <div>
+    <span class="grippy" aria-hidden="true"></span>
+    <%= render 'recipes/action_links', model: step %>
+  </div>
 </li>
