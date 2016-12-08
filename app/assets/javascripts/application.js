@@ -15,7 +15,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require selectize
-//= require html.sortable
+//= require sortable
 //= require footable
 //= require turbolinks
 //= require_tree .
@@ -33,8 +33,6 @@ var init = function() {
   });
 
   $('.table').footable();
-
-  sortable('.sortable');
 };
 
 $(document).ready(init);
