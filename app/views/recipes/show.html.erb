@@ -14,7 +14,7 @@
 <div class="row">
   <div class="col-md-12">
     <%- if @recipe.image.present? %>
-      <%= image_tag @recipe.image.url(:medium), alt: '', class: 'pull-right recipe-image' %>
+      <%= image_tag @recipe.image.url(:medium), alt: '', class: 'pull-right recipe-image img-responsive' %>
     <%- end %>
 
     <%= simple_format @recipe.description %>
@@ -67,27 +67,25 @@
   <h2>Ingredients</h2>
   <%= render 'modifier_menu', recipe: @recipe %>
 </div>
-
-<%= link_to 'Add', new_recipe_ingredient_path(@recipe) if policy(@recipe).update? %>
-
 <%- if @recipe.ingredients.any? %>
-  <ul id="ingredient-list" class="sortable list-unstyled" data-recipe-id="<%= @recipe.id %>">
+  <ul id="ingredient-list" class="<%= 'sortable ' if policy(@recipe).update? %>list-unstyled" data-recipe-id="<%= @recipe.id %>">
     <%= render @recipe.ingredients, modifier: @modifier %>
   </ul>
 <%- else %>
   <p>No ingredients have been added to this recipe.</p>
 <%- end %>
 
+<%= link_to('Add ingredient', new_recipe_ingredient_path(@recipe), class: 'btn btn-default btn-xs') if policy(@recipe).update? %>
+
 <hr>
 
 <h2>Directions</h2>
-<%= link_to 'Add', new_recipe_step_path(@recipe) if policy(@recipe).update?  %>
-
 <%- if @recipe.steps.any? %>
-  <ol id="step-list" class="sortable list-group" data-recipe-id="<%= @recipe.id %>">
+  <ol id="step-list" class="<%= 'sortable ' if policy(@recipe).update? %>list-group" data-recipe-id="<%= @recipe.id %>">
     <%= render @recipe.steps %>
   </ol>
 <%- else %>
   <p>No directions have been added to this recipe.</p>
 <%- end %>
 
+<%= link_to('Add directions', new_recipe_step_path(@recipe), class: 'btn btn-default btn-xs') if policy(@recipe).update?  %>

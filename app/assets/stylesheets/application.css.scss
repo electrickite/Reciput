@@ -22,6 +22,7 @@
 @import "ingredients";
 @import "recipes";
 
+body {margin-bottom:20px;}
 
 /* Form tweaks */
 input, input.form-control,
@@ -34,7 +35,7 @@ textarea, textarea.form-control { font-size: 16px; }
 
 .resource-form { margin-bottom:20px; }
 
-.heading-menu > .dropdown { display:inline-block; vertical-align:text-bottom; }
+.heading-menu > .dropdown, .heading-menu > a { display:inline-block; vertical-align:text-bottom; }
 .heading-menu > h2, .heading-menu > h3 { display:inline-block; }
 
 /* Decrease header height on mobile */

@@ -18,7 +18,7 @@ var update_recipe_list_order = function(el, route) {
 };
 
 var recipe_ready = function() {
-  $('#step-list').on('sortupdate', function(e) {
+  $('#step-list.sortable').on('sortupdate', function(e) {
     update_recipe_list_order(this, 'sort_recipe_steps_path');
   });
 
