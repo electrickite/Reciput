@@ -18,22 +18,12 @@ var update_recipe_list_order = function(el, route) {
 };
 
 var recipe_ready = function() {
-  $('#step-list.sortable').each(function() {
-    var self = this;
-    Sortable.create(self, {
-      onUpdate: function() {
-        update_recipe_list_order(self, 'sort_recipe_steps_path');
-      }
-    });
+  $('#step-list.sortable').on('sortupdate', function(e) {
+    update_recipe_list_order(this, 'sort_recipe_steps_path');
   });
 
-  $('#ingredient-list.sortable').each(function() {
-    var self = this;
-    Sortable.create(self, {
-      onUpdate: function() {
-        update_recipe_list_order(self, 'sort_recipe_ingredients_path');
-      }
-    });
+  $('#ingredient-list.sortable').on('sortupdate', function(e) {
+    update_recipe_list_order(this, 'sort_recipe_ingredients_path');
   });
 };
 
