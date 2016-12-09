@@ -1,6 +1,7 @@
-<%= simple_form_for [@recipe, @step], html: { class: 'resource-form' } do |f| %>
+<%= simple_form_for [@step.recipe, @step], html: { class: 'resource-form' } do |f| %>
   <%= f.error_notification %>
 
+  <%= f.input_field :recipe_id, as: :hidden %>
   <%= f.input :directions, :input_html => {:rows => 5} %>
 
   <%= f.button :submit %>

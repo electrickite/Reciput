@@ -14,4 +14,11 @@ class RecipePolicy < ApplicationPolicy
   def destroy?
     change_owner?
   end
+
+  def permitted_attributes
+    attributes = [:name, :description, :active_time, :total_time, :yield,
+      :equipment, :image, :delete_image, user_ids: []]
+    attributes << :owner_id if change_owner?
+    attributes
+  end
 end

@@ -20,4 +20,8 @@ class UserPolicy < ApplicationPolicy
   def destroy?
     false
   end
+
+  def permitted_attributes
+    [:email, :password, :password_confirmation]
+  end
 end

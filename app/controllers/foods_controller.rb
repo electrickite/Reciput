@@ -4,7 +4,7 @@ class FoodsController < ApplicationController
   # GET /foods
   # GET /foods.json
   def index
-    @q = Food.order(:name).ransack(params[:q])
+    @q = policy_scope(Food).order(:name).ransack(params[:q])
     @foods = @q.result(distinct: true).page(params[:page])
   end
 
@@ -26,7 +26,7 @@ class FoodsController < ApplicationController
   # POST /foods
   # POST /foods.json
   def create
-    @food = Food.new(food_params)
+    @food = Food.new(permitted_attributes(Food))
     authorize @food
 
     respond_to do |format|
@@ -45,7 +45,7 @@ class FoodsController < ApplicationController
   # PATCH/PUT /foods/1.json
   def update
     respond_to do |format|
-      if @food.update(food_params)
+      if @food.update(permitted_attributes(@food))
         format.html { redirect_to @food, notice: 'Food was successfully updated.' }
         format.json { render :show, status: :ok, location: @food }
       else
@@ -66,14 +66,9 @@ class FoodsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_food
-      @food = Food.find(params[:id])
-      authorize @food
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def food_params
-      params.require(:food).permit(:name, :description, :image, :delete_image)
-    end
+  def set_food
+    @food = Food.find(params[:id])
+    authorize @food
+  end
 end

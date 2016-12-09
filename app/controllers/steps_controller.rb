@@ -2,12 +2,11 @@ class StepsController < ApplicationController
   include Sortable
 
   before_action :set_step, only: [:edit, :update, :destroy]
-  before_action :set_recipe, only: [:new, :create, :edit, :update]
+  before_action :set_recipe, only: :new
 
   # GET /steps/new
   def new
-    @step = Step.new
-    set_recipe_on_step
+    @step = Step.new(recipe: @recipe)
     authorize @step
   end
 
@@ -18,14 +17,13 @@ class StepsController < ApplicationController
   # POST /steps
   # POST /steps.json
   def create
-    @step = Step.new(step_params)
-    set_recipe_on_step
+    @step = Step.new(permitted_attributes(Step))
     authorize @step
 
     respond_to do |format|
       if @step.save
         flash[:html_safe] = true
-        format.html { redirect_to @step.recipe, notice: "New step was successfully created. #{view_context.link_to 'Add another?', new_recipe_step_path(@recipe)}" }
+        format.html { redirect_to @step.recipe, notice: "New step was successfully created. #{view_context.link_to 'Add another?', new_recipe_step_path(@step.recipe)}" }
         format.json { render @step, status: :created, location: @step.recipe }
       else
         format.html { render :new }
@@ -38,7 +36,7 @@ class StepsController < ApplicationController
   # PATCH/PUT /steps/1.json
   def update
     respond_to do |format|
-      if @step.update(step_params)
+      if @step.update(permitted_attributes(@step))
         format.html { redirect_to @step.recipe, notice: 'Step was successfully updated.' }
         format.json { render @step, status: :ok, location: @step.recipe }
       else
@@ -59,24 +57,13 @@ class StepsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_step
-      @step = Step.find(params[:id])
-      authorize @step
-    end
 
-    def set_recipe
-      @recipe = Recipe.find(params[:recipe_id])
-    end
+  def set_step
+    @step = Step.includes(:recipe).find(params[:id])
+    authorize @step
+  end
 
-    def set_recipe_on_step
-      @step.recipe = @recipe
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def step_params
-      params.require(:step)
-        .permit(:directions, :sequence)
-        .merge(recipe_id: params[:recipe_id])
-    end
+  def set_recipe
+    @recipe = Recipe.find(params[:recipe_id])
+  end
 end

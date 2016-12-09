@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @q = Recipe.order(:name).ransack(params[:q])
+    @q = policy_scope(Recipe).order(:name).ransack(params[:q])
     @recipes = @q.result(distinct: true).page(params[:page])
   end
 
@@ -27,7 +27,7 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = Recipe.new(permitted_attributes(Recipe))
     @recipe.owner = current_user if signed_in?
     authorize @recipe
 
@@ -45,14 +45,8 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1
   # PATCH/PUT /recipes/1.json
   def update
-    update_params = recipe_params
-
-    if policy(@recipe).change_owner?
-      update_params.merge! params.require(:recipe).permit(:owner_id)
-    end
-
     respond_to do |format|
-      if @recipe.update(update_params)
+      if @recipe.update(permitted_attributes(@recipe))
         format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
         format.json { render :show, status: :ok, location: @recipe }
       else
@@ -73,16 +67,9 @@ class RecipesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recipe
-      @recipe = Recipe.find(params[:id])
-      authorize @recipe
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def recipe_params
-      permitted_params = params.require(:recipe).permit(:name, :description,
-        :active_time, :total_time, :yield, :equipment, :image, :delete_image,
-        user_ids: [])
-    end
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+    authorize @recipe
+  end
 end
