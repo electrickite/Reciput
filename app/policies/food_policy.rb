@@ -3,11 +3,6 @@ class FoodPolicy < ApplicationPolicy
     signed_in?
   end
 
-  def update?
-    signed_in?
-  end
-
-  def destroy?
-    update?
-  end
+  alias_method :update?, :create?
+  alias_method :destroy?, :create?
 end

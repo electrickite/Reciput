@@ -1,17 +1,9 @@
 class IngredientPolicy < ApplicationPolicy
-  def create?
-    update?
-  end
-
   def update?
     signed_in? && record.recipe.editors.include?(user)
   end
 
-  def destroy?
-    update?
-  end
-
-  def sort?
-    update?
-  end
+  alias_method :create?, :update?
+  alias_method :destroy?, :update?
+  alias_method :sort?, :update?
 end
