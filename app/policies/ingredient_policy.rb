@@ -1,6 +1,6 @@
 class IngredientPolicy < ApplicationPolicy
   def update?
-    signed_in? && record.recipe.editors.include?(user)
+    record.recipe.editors.include?(user)
   end
 
   alias_method :create?, :update?

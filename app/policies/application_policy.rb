@@ -2,7 +2,7 @@ class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
-    @user = user
+    @user = user || User.new
     @record = record
   end
 
@@ -53,7 +53,7 @@ class ApplicationPolicy
 
   private
 
-    def signed_in?
-      user.present?
-    end
+  def signed_in?
+    user.persisted?
+  end
 end
