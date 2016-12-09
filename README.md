@@ -44,7 +44,35 @@ You can also access your application via the Rails console with:
 
     $ bundle exec rails console
 
+Deployment
+----------
+
+### Capistrano
+
+Reciput provides a base [Capistrano][4] configuration. You'll need to create a
+deploy file for each environment you wish to deploy to. Ex:
+
+    $ cp config/deploy/production.rb.example config/deploy/production.rb
+    $ vi config/deploy/production.rb
+    $ bundle exec cap production deploy
+
+### Backups
+
+A basic model for the [Backup][5] gem is provided. You must install the gem
+separately. (it is not part of the application bundle)
+
+    $ gem install backup
+
+Database and file system backups are run with a rake task. By default, backups
+will be placed in the application `tmp` directory. This is probably not ideal,
+so you can set the backup path in an environment variable. Similarly, you can
+set an email address that will receive backup notifications.
+
+    $ BACKUP_PATH=/path/to/backups MAIL_TO=admin@example.com bundle exec rake backup
+
 
 [1]: https://www.ruby-lang.org/en/
 [2]: http://bundler.io
 [3]: http://www.imagemagick.org/script/index.php
+[4]: http://capistranorb.com
+[5]: http://backup.github.io/backup/
