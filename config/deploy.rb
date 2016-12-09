@@ -3,7 +3,7 @@ lock '3.4.0'
 
 set :application, 'reciput'
 
-set :linked_dirs, %w{ log tmp/pids tmp/cache tmp/config tmp/sockets public/system vendor/bundle }
+set :linked_dirs, %w{ log tmp/pids tmp/cache tmp/config tmp/sockets db/full_backup public/system vendor/bundle }
 set :linked_files, %w{ config/database.yml .env }
 
 namespace :deploy do
