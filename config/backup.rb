@@ -90,7 +90,7 @@ Backup::Model.new(:full_backup, 'Database and file backup for Reciput') do
       mail.on_failure = true
 
       mail.delivery_method = :sendmail
-      mail.from            = ENV['MAIL_FROM'] if ENV['MAIL_FROM']
+      mail.from            = ENV['MAIL_FROM']
       mail.to              = ENV['MAIL_TO']
     end
   end
