@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1
   # GET /recipes/1.json
   def show
-    @modifier = params[:mod].present? ? params[:mod].to_f : nil 
+    @modifier = params[:mod].present? ? params[:mod].to_f : nil
   end
 
   # GET /recipes/new

@@ -23,6 +23,8 @@ gem 'ransack'
 gem 'dotiw'
 gem 'paperclip', '~> 5.1'
 gem 'js-routes'
+gem 'prawn'
+gem 'prawn_rails'
 
 gem 'mysql2', group: :mysql
 gem 'pg', group: :postgres

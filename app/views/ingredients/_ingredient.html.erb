@@ -1,7 +1,8 @@
 <li data-id="<%= ingredient.id %>">
-  <span class="grippy" aria-hidden="true"></span>
+  <%- if policy(ingredient).update? %>
+    <%= render 'action_buttons', model: ingredient, size: :xs, path_chain: [ingredient.recipe, ingredient], handle: true %>
+  <%- end %>
   <%= format_amount ingredient.amount(modifier) %>
   <%= ingredient.unit %>
   <%= ingredient.name %><%= ", #{ingredient.notes}" if ingredient.notes.present? %>
-  <%= render 'recipes/action_links', model: ingredient %>
 </li>

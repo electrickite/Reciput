@@ -2,7 +2,7 @@
 <%- content_for(:opengraph_meta_tags) { render 'opengraph', object: @food } %>
 <%- content_for(:actions) do %>
   <div class="pull-right">
-    <%= render 'action_buttons', model: @food, back_path: foods_path %>
+    <%= render 'action_buttons', model: @food %>
   </div>
 <%- end %>
 

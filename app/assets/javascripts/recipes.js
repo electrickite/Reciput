@@ -23,7 +23,7 @@ var recipe_ready = function() {
     var self = this;
     Sortable.create(self, {
       draggable: 'li',
-      handle: '.grippy',
+      handle: 'button.drag-handle',
       onUpdate: function() {
         update_recipe_list_order(self);
       }

@@ -6,7 +6,6 @@
 
 ol.list-group { list-style:decimal inside; }
 ol .list-group-item { display:list-item; }
-ol .list-group-item p:first-of-type { display:inline-block; }
 
-#ingredient-list li { line-height:1.5em; }
-#ingredient-list .action-links { margin-left:6px; }
+#ingredient-list li { line-height:2em; }
+#ingredient-list .action-buttons { margin-right:6px; }
