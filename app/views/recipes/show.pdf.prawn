@@ -8,8 +8,8 @@ info = {
 options = {
   margin: 60,
   info: info,
-  # force_download: true,
-  # filename: "#{@recipe.name.parameterize}.pdf"
+  force_download: true,
+  filename: "#{@recipe.name.parameterize}.pdf"
 }
 
 prawn_document(options) do |pdf|
