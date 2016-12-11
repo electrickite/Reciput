@@ -1,4 +1,4 @@
-<li class="list-group-item" data-id="<%= step.id %>">
+<li data-id="<%= step.id %>">
   <%= simple_format step.directions %>
   <%- if policy(step).update? %>
     <%= render 'action_buttons', model: step, size: :xs, path_chain: [step.recipe, step], handle: true %>

@@ -9,3 +9,36 @@ ol .list-group-item { display:list-item; }
 
 #ingredient-list li { line-height:2em; }
 #ingredient-list .action-buttons { margin-right:6px; }
+
+#step-list {
+  counter-reset:li;
+  margin-left:0;
+  padding-left:0;
+}
+#step-list > li {
+  position:relative;
+  margin:0 0 6px 2em;
+  padding:4px 8px;
+  list-style:none;
+  border-top:2px solid #666;
+  margin-bottom: 16px;
+}
+#step-list > li:before {
+  content:counter(li);
+  counter-increment:li;
+  position:absolute;
+  top:-2px;
+  left:-2em;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
+  width:2em;
+  margin-right:8px;
+  padding:4px;
+  border-top:2px solid #666;
+  color:#fff;
+  background:#666;
+  font-weight:bold;
+  font-family:"Helvetica Neue", Arial, sans-serif;
+  text-align:center;
+}

@@ -81,7 +81,7 @@
 
 <h2>Directions</h2>
 <%- if @recipe.steps.any? %>
-  <ol id="step-list" class="<%= 'sortable ' if policy(@recipe).update? %>list-group" data-recipe-id="<%= @recipe.id %>" data-route="sort_recipe_steps_path">
+  <ol id="step-list" class="<%= 'sortable' if policy(@recipe).update? %>" data-recipe-id="<%= @recipe.id %>" data-route="sort_recipe_steps_path">
     <%= render @recipe.steps %>
   </ol>
 <%- else %>
