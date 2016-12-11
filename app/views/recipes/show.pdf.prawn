@@ -1,6 +1,6 @@
 info = {
   Title: @recipe.name,
-  Author: @recipe.owner.username,
+  Author: @recipe.owner.try(:username),
   Creator: 'Reciput',
   CreationDate: @recipe.created_at
 }
@@ -8,8 +8,8 @@ info = {
 options = {
   margin: 60,
   info: info,
-  force_download: true,
-  filename: "#{@recipe.name.parameterize}.pdf"
+  # force_download: true,
+  # filename: "#{@recipe.name.parameterize}.pdf"
 }
 
 prawn_document(options) do |pdf|
@@ -31,20 +31,26 @@ prawn_document(options) do |pdf|
   pdf.stroke_horizontal_rule
   pdf.move_down 10
 
-  pdf.image @recipe.image.path(:medium), at: [292, pdf.cursor], fit: [200, 200]
+  if @recipe.image.present?
+    image = pdf.image @recipe.image.path(:medium), at: [292, pdf.cursor], fit: [200, 200]
 
-  excess_description = pdf.text_box @recipe.description,
-    at: [0, pdf.cursor],
-    width: 287,
-    height: 210,
-    overflow: :truncate
+    excess_description = pdf.text_box @recipe.description,
+      at: [0, pdf.cursor],
+      width: 287,
+      height: image.scaled_height + 10,
+      overflow: :truncate
 
-  pdf.move_down 209
-  pdf.text excess_description if excess_description.present?
+    pdf.move_down image.scaled_height + 9
+    pdf.text excess_description if excess_description.present?
+  else
+    pdf.text @recipe.description
+  end
 
   pdf.move_down 10
-  pdf.text "<b>Equipment:</b> #{@recipe.equipment}", inline_format: true
-  pdf.move_down 10
+  if @recipe.equipment.present?
+    pdf.text "<b>Equipment:</b> #{@recipe.equipment}", inline_format: true
+    pdf.move_down 10
+  end
 
   pdf.start_new_page if pdf.cursor < 50
   pdf.text "Ingredients", size: 18, style: :bold
