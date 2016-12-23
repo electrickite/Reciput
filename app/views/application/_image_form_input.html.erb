@@ -1,4 +1,4 @@
-<%- if model.image.present? %>
+<%- if model.image.present? && model.valid? %>
   <div class="form-group optional recipe_image">
     <label class="file optional control-label" for="recipe_image">Image</label>
     <%= image_tag model.image.url(:medium), class: 'img-responsive' %>
