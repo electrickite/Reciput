@@ -9,7 +9,7 @@ module Imageable
     has_attached_file :image, styles: { medium: ['400x400>', :png], thumb: ['100x100#', :png] }
 
     validates_attachment :image,
-      size: { less_than: 1.megabytes },
+      size: { less_than: 3.megabytes },
       content_type: { content_type: ['image/jpeg', 'image/gif', 'image/png'] }
   end
 
