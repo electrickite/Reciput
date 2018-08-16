@@ -31,7 +31,7 @@ gem 'pg', group: :postgres
 
 group :production do
   gem 'rails_12factor'
-  gem 'puma'
+  gem 'puma', '~> 3.7'
 end
 
 group :development, :test do
