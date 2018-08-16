@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.5.1'
 
-gem 'rails', '4.2.6'
+gem 'rails', '4.2.10'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
@@ -21,12 +21,12 @@ gem 'selectize-rails'
 gem 'kaminari'
 gem 'ransack'
 gem 'dotiw'
-gem 'paperclip', '~> 5.1'
+gem 'paperclip', '~> 5.2'
 gem 'js-routes'
 gem 'prawn'
 gem 'prawn_rails'
 
-gem 'mysql2', group: :mysql
+gem 'mysql2', '~> 0.4.9', group: :mysql
 gem 'pg', group: :postgres
 
 group :production do

@@ -8,7 +8,7 @@ Prerequisites
 
 The following dependencies must be installed to run this application.
 
-  * [Ruby][1] 2.3.1
+  * [Ruby][1] 2.5.1
   * [Bundler][2]
   * [ImageMagick][3]
 
