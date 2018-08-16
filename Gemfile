@@ -42,8 +42,8 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'capistrano', '~> 3.1'
-  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano', '~> 3.8'
+  gem 'capistrano-rails', '~> 1.3'
   gem 'capistrano-passenger'
   gem 'capistrano-chruby'
 end
