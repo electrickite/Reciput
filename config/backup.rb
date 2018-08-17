@@ -11,6 +11,10 @@ RAILS_ENV = ENV['RAILS_ENV'] || 'development'
 db_config = YAML.load_file(File.expand_path('../database.yml', __FILE__))[RAILS_ENV]
 rails_root = File.expand_path('../../', __FILE__)
 
+Backup::Utilities.configure do
+  sendmail   ENV['SENDMAIL_PATH'] || '/usr/sbin/sendmail'
+end
+
 ##
 # Backup Generated: full_backup
 # You can run the backup with the following command:
