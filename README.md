@@ -61,7 +61,7 @@ deploy file for each environment you wish to deploy to. Ex:
 A basic model for the [Backup][5] gem is provided. You must install the gem
 separately. (it is not part of the application bundle)
 
-    $ gem install backup
+    $ gem install backup -v5.0.0.beta.2
 
 Database and file system backups are run with a rake task. By default, backups
 will be placed in the application `tmp` directory. This is probably not ideal,
